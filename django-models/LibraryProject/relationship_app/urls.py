@@ -1,7 +1,5 @@
 from django.urls import path
-from .views import (
-    list_books,
-)
+from .views import list_books
 from .views import LibraryDetailView
 from django.contrib.auth.views import LoginView as loginview, LogoutView as logoutview
 from django.contrib.auth.decorators import login_required
@@ -20,4 +18,5 @@ urlpatterns = [
     path('add/', views.add_book, name='add_book'),
     path('edit/<int:pk>/'),
     path('delete/<int:pk>/', views.delete_book, name='delete_book'),
+
 ]
