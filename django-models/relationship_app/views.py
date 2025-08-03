@@ -2,11 +2,17 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from .models import Library
 from .models import Book
+
 from django.contrib.auth import login
+
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+
+## I don't know what is this?
+UserCreationForm(register, login, logout)
+UserCreationForm()
 
 # relationship_app/views.py
 # Create your views here.
