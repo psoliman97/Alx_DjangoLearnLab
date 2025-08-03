@@ -37,9 +37,9 @@ class Book(models.Model):
         return self.title
 
 class Meta:
-    permission = (
+    permissions = (
         ("can_add_book", "Can add book"),
-        ("can_edit_book", "Can edit book"),
+        ("can_change_book", "Can change book"),
         ("can_delete_book", "Can delete book"),
     )
 

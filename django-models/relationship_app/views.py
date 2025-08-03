@@ -11,6 +11,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
 
+from django.contrib.auth.decorators import permission_required
+
+relationship_app.can_add_book
+relationship_app.can_change_book
+relationship_app.can_delete_book
+
 ## I don't know what is this?
 UserCreationForm()
 
