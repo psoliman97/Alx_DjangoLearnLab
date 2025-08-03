@@ -14,13 +14,13 @@ UserCreationForm(register, login, logout)
 UserCreationForm()
 
 ##
-def is_admin(user):
-    return user.is_authenticated and user.role == 'admin'
+def is_Admin(user):
+    return user.is_authenticated and user.role == 'Admin'
 
 @login_required
-@user_passes_test(is_admin)
-def admin_only_view(request):
-    return render(request, 'admin_custom.html')
+@user_passes_test(is_Admin)
+def Admin_only_view(request):
+    return render(request, 'admin_view.html')
 ##
 
 # relationship_app/views.py
@@ -72,6 +72,7 @@ def is_member(user):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 
 
