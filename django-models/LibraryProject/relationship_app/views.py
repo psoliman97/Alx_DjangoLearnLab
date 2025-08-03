@@ -7,20 +7,20 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import render
+
 
 UserCreationForm(register, login, logout)
 UserCreationForm()
 
 ##
-def check_role(role):
-    def predicate(user):
-        return user.is_authenticated and user.role == role
-    return user_passes_test(predicate)
+def is_admin(user):
+    return user.is_authenticated and user.role == 'admin'
 
 @login_required
-@check_role('Admin')
-def admin_view(request):
-    pass
+@user_passes_test(is_admin)
+def admin_only_view(request):
+    return render(request, 'admin_custom.html')
 ##
 
 # relationship_app/views.py
@@ -72,6 +72,7 @@ def is_member(user):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 
 
