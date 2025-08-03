@@ -12,17 +12,14 @@ UserCreationForm(register, login, logout)
 UserCreationForm()
 
 ##
-from django.contrib.auth.decorators import login_required, user_passes_test
-
 def check_role(role):
     def predicate(user):
         return user.is_authenticated and user.role == role
     return user_passes_test(predicate)
 
 @login_required
-@check_role('admin')
+@check_role('Admin')
 def admin_view(request):
-    # هنا المحتوى الخاص بالمشرفين
     pass
 ##
 
@@ -75,6 +72,7 @@ def is_member(user):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 
 
