@@ -8,6 +8,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
+UserCreationForm(register, login, logout)
+UserCreationForm()
+
 # relationship_app/views.py
 # Create your views here.
 def list_books(request):
@@ -57,6 +60,7 @@ def is_member(user):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 
 
