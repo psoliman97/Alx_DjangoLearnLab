@@ -36,7 +36,7 @@ class Book(models.Model):
 class Meta:
     permissions = (
         ("can_add_book", "Can add book"),
-        ("can_edit_book", "Can edit book"),
+        ("can_change_book", "Can change book"),
         ("can_delete_book", "Can delete book"),
     )
 
@@ -61,6 +61,7 @@ class UserProfile(models.Model):
     def create_your_user_profile(sender, instance, created, **kwargs):
         if created:
             UserProfile.objects.create(user=instance)
+
 
 
 
