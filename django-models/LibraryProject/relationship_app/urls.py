@@ -19,10 +19,12 @@ urlpatterns = [
     #path('admin/', views.admin.view, name='admin_view'),
     path('librarian/', views.librarian.view, name='librarian_view'),
     path('member/', views.member_view, name='member_view'),
-    path('add/', views.add_book, name='add_book'),
-    path('edit/<int:pk>/'),
+    path('add_book/', views.add_book, name='add_book'),
+    path('edit_book/', views.add_book, name='edit_book'),
+    #path('edit/<int:pk>/'),
     path('delete/<int:pk>/', views.delete_book, name='delete_book'),
 
 ]
+
 
 
