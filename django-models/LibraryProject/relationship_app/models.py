@@ -7,6 +7,22 @@ from django.db.models import Model
 from django.db.models import CharField
 
 
+#
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+class CustomUser(AbstractUser):
+    ROLE_CHOICES = (
+        ('admin', 'Admin'),
+        ('library_member', 'Library Member'),
+        ('librarian', 'Librarian'),
+    )
+    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+
+#
+
+
 #  Create your models here.
 class Author(models.Model):
     name = models.CharField(max_length=100)
@@ -49,4 +65,5 @@ class UserProfile(models.Model):
     def create_your_user_profile(sender, instance, created, **kwargs):
         if created:
             UserProfile.objects.create(user=instance)
+
 
