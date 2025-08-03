@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import DetailView
-from .models import Book, Library
+from .models import Library
+from .models import Book
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
@@ -55,5 +56,6 @@ def is_member(user):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 
