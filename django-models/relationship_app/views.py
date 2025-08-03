@@ -9,10 +9,22 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
+from django.shortcuts import render
 
 ## I don't know what is this?
-UserCreationForm(register, login, logout)
 UserCreationForm()
+
+
+##
+def is_Admin(user):
+    return user.is_authenticated and user.role == 'admin'
+
+@login_required
+@user_passes_test(is_Admin)
+def Admin_only_view(request):
+    return render(request, 'admin_view.html')
+##
+
 
 # relationship_app/views.py
 # Create your views here.
