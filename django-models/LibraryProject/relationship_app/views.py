@@ -10,9 +10,9 @@ from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
 
 from django.contrib.auth.decorators import permission_required
-from django.contrib.auth.decorators import can_add_book
-from django.contrib.auth.decorators import can_change_book
-from django.contrib.auth.decorators import can_delete_book
+relationship_app.can_add_book
+relationship_app.can_change_book
+relationship_app.can_delete_book
 
 
 
@@ -78,6 +78,7 @@ def is_member(user):
 @user_passes_test(is_member)
 def member_view(request):
     return render(request, 'relationship_app/member_view.html')
+
 
 
 
