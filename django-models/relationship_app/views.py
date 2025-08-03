@@ -17,7 +17,7 @@ UserCreationForm()
 
 ##
 def is_Admin(user):
-    return user.is_authenticated and user.role == 'admin'
+    return user.is_authenticated and user.role == 'Admin'
 
 @login_required
 @user_passes_test(is_Admin)
