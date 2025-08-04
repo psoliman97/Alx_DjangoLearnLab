@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomerUser
+from .models import CustomUser
 from .models import Book
 from django.contrib.auth.admin import UserAdmin
 
@@ -11,7 +11,7 @@ class BookAdmin(admin.ModelAdmin):
     search_fields = ('title', 'author')
 
 class CustomUserAdmin(UserAdmin):
-    model = CustomerUser
+    model = CustomUser
     list_display = ('email', 'date_of_birth', 'profile_photo', 'is_admin')
     list_filter = ('is_admin', 'date_of_birth')
     fieldsets = (
@@ -25,5 +25,6 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(Book, BookAdmin)
 admin.site.register(CustomUser, CustomUserAdmin)
+
 
 
