@@ -44,7 +44,7 @@ class CustomUser(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
     is_admin = models.BooleanField(default=True)
-    objects = CustomerUserManager()
+    objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = 'date_of_birth', 'profile_photo'
@@ -68,4 +68,5 @@ admins_group.permissions.add(can_edit_permission, can_create_permission, can_vie
 
 
     
+
 
