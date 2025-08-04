@@ -26,13 +26,24 @@ class CustomUserManager(BaseUserManager):
         ("can_create", "create_book"),
         ("can_delete", "delete_book"),
         )]
-    def create_user(self, email, password=None, date_of_birth=None, profile_photo=None):
+    def create_superuser(self, email, password=None, date_of_birth=None, profile_photo=None):
         if not email:
             raise ValueError('Users must have an email address')
         user = self.model(
         email = self.normalize_email(email),
         date_of_birth = date_of_birth,
         profile_photo = profile_photo
+        )
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+    def create_user(self, email, password=None, date_of_birth=None, profile_photo=None):
+        if not email:
+            raise ValueError('Users must have an email address')
+        user = self.model(
+            email=self.normalize_email(email),
+            date_of_birth=date_of_birth,
+            profile_photo=profile_photo
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -68,6 +79,7 @@ admins_group.permissions.add(can_edit_permission, can_create_permission, can_vie
 
 
     
+
 
 
 
