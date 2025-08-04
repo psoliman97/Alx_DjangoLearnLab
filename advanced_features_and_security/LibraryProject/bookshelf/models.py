@@ -39,7 +39,7 @@ class CustomerUserManager(BaseUserManager):
         return user
 
 
-class CustomerUser(AbstractUser):
+class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to='profile_pics/', null=True, blank=True)
@@ -64,6 +64,7 @@ can_delete_permission = Permission.objects.get(codename='can_delete')
 editors_group.permissions.add(can_edit_permission, can_create_permission)
 viewers_group.permissions.add(can_view_permission)
 admins_group.permissions.add(can_edit_permission, can_create_permission, can_view_permission, can_delete_permission)
+
 
 
     
