@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login  # Explicitly added as required
 
 # Register View
-def register_view(request):
+def register(request):  # ✅ exact match for "views.register"
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
