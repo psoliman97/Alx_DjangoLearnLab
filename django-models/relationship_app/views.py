@@ -64,23 +64,6 @@ def is_admin(user):
 def admin_view(request):
     return render(request, 'relationship_app/admin_view.html')
 
-def is_librarian(user):
-    return user.userprofile.role == 'Librarian'
-
-
-@user_passes_test(is_librarian)
-def librarian_view(request):
-    return render(request, 'relationship_app/librarian_view.html')
-
-
-def is_member(user):
-    return user.userprofile.role == 'Member'
-
-@user_passes_test(is_member)
-def member_view(request):
-    return render(request, 'relationship_app/member_view.html')
-
-
 
 
 @permission_required('relationship_app.can_add_book', raise_exception=True)
@@ -115,4 +98,5 @@ def delete_book(request, pk):
         book.delete()
         return redirect('book_list')  # Replace 'book_list' with the appropriate view name
     return render(request, 'relationship_app/delete_book.html', {'book': book})
+
 
