@@ -45,18 +45,16 @@ class LibraryDetailView(DetailView):
     context_object_name = 'library' 
 
  
-def get_context_data(self, **kwargs):
-    context = super().get_context_data(**kwargs)
-    context['books'] = self.object.books.all()
-    return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['books'] = self.object.books.all()
+        return context
 
 
-def register(CreateView):
-    form_class = UserCreationForm
+class register(CreateView):
+    form_class = UserCreationForm() 
     success_url = reverse_lazy('login')
     template_name = 'relationship_app/register.html'
-
-
 
 def is_admin(user):
     return user.userprofile.role == 'Admin'
@@ -117,3 +115,4 @@ def delete_book(request, pk):
         book.delete()
         return redirect('book_list')  # Replace 'book_list' with the appropriate view name
     return render(request, 'relationship_app/delete_book.html', {'book': book})
+
