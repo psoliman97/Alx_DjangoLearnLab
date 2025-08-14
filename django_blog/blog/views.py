@@ -211,9 +211,11 @@ class PostByTagListView(ListView):
 
     def get_queryset(self):
         tag = self.kwargs.get('tag')
-        return Post.objects.filter(tag__name__in=[tag])
+        #return Post.objects.filter(tag__name__in=[tag])
+        return Post.objects.filter(tags__name__icontains=[tag])
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tag'] = self.kwargs.get('tag')
         return context
+
