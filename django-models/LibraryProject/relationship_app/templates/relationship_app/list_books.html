@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>List of Books</title>
-</html>
+</head>
 <body>
-    <h1>Books Available</h1>
+    <h1>Books Available:</h1>
     <ul>
         {% for book in books %}
-            <li>{{ book.title }} by {{ book.author.name }} </li>
-        {% empty %}
+        <li>{{ book.title }} by {{ book.author.name }}</li>
+        {% endfor %}
     </ul>
 </body>
 </html>
