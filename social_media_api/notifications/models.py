@@ -4,7 +4,7 @@ from django.contrib.contenttypes import generic
 
 # Create your models here.
 
-class notification(models.Model):
+class Notification(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -37,3 +37,4 @@ class notification(models.Model):
 
     class Meta:
         ordering = ['-created_at']  # Order notifications by creation date (latest first)
+
