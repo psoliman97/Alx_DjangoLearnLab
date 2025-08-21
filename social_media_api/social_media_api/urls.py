@@ -24,4 +24,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('notifications/', include('notifications.urls')),
     path('posts/', include('posts.urls')),
+    path('api-auth/', include('rest_framework.urls')),  # For browsable API authentication
+    path('api-token-auth/', include('rest_framework.authtoken.urls')),  # For token authentication
+    path('api/', include('api.urls')),  # Include API URLs
 ]
+
